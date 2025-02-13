@@ -1,0 +1,286 @@
+<div
+  [formGroup]="dynamicForm"
+  id="container-mod"
+  class="row"
+  [ngClass]="styleClass"
+>
+  <div
+    class="form-group mb-3"
+    *ngFor="let field of formFields"
+    [ngClass]="field.styleClass"
+    [ngStyle]="field.style"
+  >
+    <div *ngIf="field.type !== 'NotShow'">
+      <label
+        class="form-label"
+        for="inputAddress"
+        [ngClass]="field.styleClass?.label"
+        [ngStyle]="field.style?.label"
+        >{{ field.label || field.name }}</label
+      >
+    </div>
+
+    <ng-container
+      *ngIf="
+        field.type !== 'select' &&
+        field.type !== 'checkbox' &&
+        field.type !== 'multiselect' &&
+        field.type !== 'date' &&
+        field.type !== 'time' &&
+        field.type !== 'selectGroup' &&
+        field.type !== 'NotShow' &&
+        field.type !== 'many-select' &&
+        field.type !== 'file' &&
+        field.type !== 'phoneNumber'
+      "
+    >
+      <input
+        [type]="field.type"
+        class="w-100"
+        [autocomplete]="false"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            dynamicForm.controls[field.name].touched &&
+            dynamicForm.controls[field.name].invalid
+        }"
+        [ngClass]="field.styleClass?.input"
+        [ngStyle]="field.style?.input"
+        pInputText
+        [formControlName]="field.name"
+      />
+    </ng-container>
+    <ng-container *ngIf="field.type === 'checkbox'">
+      <div>
+        <p-inputSwitch [formControlName]="field.name" />
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="field.type === 'phoneNumber'">
+      <p-inputMask
+        mask="+216 99 999 999"
+        [style]="{ width: '100%' }"
+        [formControlName]="field.name"
+        [placeholder]="field.placeHolder"
+        (onInput)="preventPrefixDeletion($event, field.name, field)"
+      ></p-inputMask>
+    </ng-container>
+    <ng-container *ngIf="field.type === 'many-select'">
+      <p-multiSelect
+        [filterBy]="field.filterBy ? field.filterBy : undefined"
+        [filter]="field.filter"
+        [formControlName]="field.name"
+        [options]="field.options || []"
+        [showClear]="true"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            dynamicForm.controls[field.name].touched &&
+            dynamicForm.controls[field.name].invalid
+        }"
+        optionValue="id"
+        [lazy]="true"
+        [style]="{ width: '100%' }"
+        [appendTo]="'body'"
+        optionLabel="title"
+      >
+      </p-multiSelect>
+    </ng-container>
+    <ng-container *ngIf="field.type === 'select'">
+      <!-- [optionLabel]="
+      field.filedValue ? field.filedValue : getOptionLabel(field.options)
+    " -->
+      <p-dropdown
+        [style]="{ width: '100%', 'min-height': '47px' }"
+        [options]="field.options || []"
+        [formControlName]="field.name"
+        optionValue="id"
+        [filterBy]="field.filterBy ? field.filterBy : undefined"
+        [filter]="field.filter"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            dynamicForm.controls[field.name].touched &&
+            dynamicForm.controls[field.name].invalid
+        }"
+        [appendTo]="'body'"
+      >
+        <ng-template let-itemField pTemplate="selectedItem">
+          <div class="flex align-items-center gap-2">
+            <div>
+              {{
+                field.filedValue
+                  ? itemField[field.filedValue]
+                  : getFormattedValue(itemField)
+              }}
+            </div>
+          </div>
+        </ng-template>
+        <ng-template let-itemField pTemplate="item">
+          <div class="flex align-items-center gap-2">
+            <div>
+              {{
+                field.filedValue
+                  ? itemField[field.filedValue]
+                  : getFormattedValue(itemField)
+              }}
+            </div>
+          </div>
+        </ng-template>
+      </p-dropdown>
+    </ng-container>
+
+    <ng-container *ngIf="field.type === 'selectGroup'">
+      <p-dropdown
+        [formControlName]="field.name"
+        [options]="field.options || []"
+        [showClear]="true"
+        [style]="{ width: '100%' }"
+        [group]="true"
+        [appendTo]="'body'"
+        [filterBy]="field.filterBy ? field.filterBy : undefined"
+        [filter]="field.filter"
+        optionLabel="title"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            dynamicForm.controls[field.name].touched &&
+            dynamicForm.controls[field.name].invalid
+        }"
+        optionValue="id"
+        [optionGroupChildren]="
+          field.subGroupOptions ? field.subGroupOptions : ''
+        "
+        [optionGroupLabel]="'title'"
+      >
+        <ng-template let-group pTemplate="group">
+          <div class="flex align-items-center">
+            <span style="color: red">{{ group.title }}</span>
+          </div>
+        </ng-template>
+        <ng-template let-item pTemplate="items">
+          <div class="flex align-items-center">
+            <span>{{
+              field.filedValue
+                ? item[field.filedValue]
+                : getFormattedValue(item)
+            }}</span>
+          </div>
+        </ng-template>
+        <ng-template let-itemField pTemplate="selectedItem">
+          <div class="flex align-items-center gap-2">
+            <div>
+              {{
+                field.filedValue
+                  ? itemField[field.filedValue]
+                  : getFormattedValue(itemField)
+              }}
+            </div>
+          </div>
+        </ng-template>
+      </p-dropdown>
+    </ng-container>
+
+    <ng-container *ngIf="field.type === 'multiselect'">
+      <p-dropdown
+        [style]="{ width: '100%' }"
+        [options]="field.options || []"
+        [formControlName]="field.name"
+        optionLabel="title"
+        optionValue="id"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            dynamicForm.controls[field.name].touched &&
+            dynamicForm.controls[field.name].invalid
+        }"
+        [appendTo]="'body'"
+        (onChange)="
+          onCategoryChange($event.value, field.name, field?.subOption)
+        "
+      ></p-dropdown>
+    </ng-container>
+    <ng-container *ngIf="field.type === 'time'">
+      <p-calendar
+        dateFormat="dd/mm/yy "
+        [style]="{ width: '100%' }"
+        [formControlName]="field.name"
+        [appendTo]="'body'"
+        [showOnFocus]="false"
+        [iconDisplay]="'input'"
+        [showIcon]="true"
+        [timeOnly]="true"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            dynamicForm.controls[field.name].touched &&
+            dynamicForm.controls[field.name].invalid
+        }"
+        [hourFormat]="'24'"
+        [iconDisplay]="'input'"
+        inputId="templatedisplay"
+      >
+        <ng-template pTemplate="inputicon" let-clickCallBack="clickCallBack">
+          <i
+            class="pi pi-calendar pointer-events-none"
+            style="color: #3b82f6"
+            (click)="clickCallBack($event)"
+          ></i>
+        </ng-template>
+      </p-calendar>
+    </ng-container>
+    <ng-container *ngIf="field.type === 'date'">
+      <p-calendar
+        dateFormat="dd/mm/yy "
+        [style]="{ width: '100%' }"
+        [formControlName]="field.name"
+        [showIcon]="true"
+        [iconDisplay]="'input'"
+        dateFormat="dd/mm/yy"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            dynamicForm.controls[field.name].touched &&
+            dynamicForm.controls[field.name].invalid
+        }"
+        [appendTo]="'body'"
+        inputId="templatedisplay"
+      >
+        <ng-template pTemplate="inputicon" let-clickCallBack="clickCallBack">
+          <i
+            class="pi pi-calendar pointer-events-none"
+            style="color: #3b82f6"
+            (click)="clickCallBack($event)"
+          ></i>
+        </ng-template>
+      </p-calendar>
+    </ng-container>
+    <ng-container *ngIf="field.type === 'file'">
+      <div
+        *ngIf="field?.urlFile"
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+        "
+      >
+        <img style="width: 200px" [src]="field?.urlFile" alt="" />
+      </div>
+      <p-fileUpload
+        name="myfile[]"
+        mode="advanced"
+        #fileUpload
+        [showUploadButton]="false"
+        [showCancelButton]="false"
+        accept="image/*,video/*"
+        maxFileSize="100000000000"
+        [customUpload]="true"
+        (onSelect)="FileUploader($event)"
+        id="activityLogo"
+      ></p-fileUpload>
+      <!-- Content Template -->
+    </ng-container>
+    <br />
+  </div>
+</div>
+<div class="d-flex justify-content-center pt-3">
+  <div class="w-30">
+    <button class="btn btn-danger p-3 w-100 h-100" (click)="onSubmit()">
+      Sauvegarder
+    </button>
+  </div>
+</div>

@@ -1,0 +1,187 @@
+<div
+  [formGroup]="dynamicForm"
+  id="container-mod"
+  class="row"
+  [ngClass]="styleClass"
+>
+  <div
+    class="form-group mb-3"
+    *ngFor="let field of formFields"
+    [ngClass]="field.styleClass"
+    [ngStyle]="field.style"
+  >
+    <div *ngIf="field.type !== 'NotShow'">
+      <label
+        class="form-label"
+        for="{{ field.name }}"
+        [ngClass]="field.styleClass?.label"
+        [ngStyle]="field.style?.label"
+      >
+        {{ field.label || field.name }}
+      </label>
+    </div>
+
+    <!-- Text input -->
+    <div
+      *ngIf="
+        field.type !== 'select' &&
+        field.type !== 'checkbox' &&
+        field.type !== 'multiselect' &&
+        field.type !== 'date' &&
+        field.type !== 'time' &&
+        field.type !== 'selectGroup' &&
+        field.type !== 'NotShow' &&
+        field.type !== 'many-select' &&
+        field.type !== 'file' &&
+        field.type !== 'phoneNumber'
+      "
+    >
+      <input
+        [type]="field.type"
+        class="w-100"
+        [autocomplete]="false"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            dynamicForm.controls[field.name].touched &&
+            dynamicForm.controls[field.name].invalid
+        }"
+        [ngClass]="field.styleClass?.input"
+        [ngStyle]="field.style?.input"
+        [formControlName]="field.name"
+      />
+    </div>
+
+    <!-- Checkbox -->
+    <div *ngIf="field.type === 'checkbox'">
+      <input
+        type="checkbox"
+        [formControlName]="field.name"
+        [ngClass]="field.styleClass?.input"
+      />
+    </div>
+
+    <!-- Phone Number -->
+    <div *ngIf="field.type === 'phoneNumber'">
+      <input
+        type="text"
+        class="w-100"
+        [formControlName]="field.name"
+        placeholder="+216 .. ... ..."
+        (input)="preventPrefixDeletion($event, field.name)"
+      />
+    </div>
+
+    <!-- MultiSelect -->
+    <div *ngIf="field.type === 'many-select'">
+      <select
+        [formControlName]="field.name"
+        multiple
+        class="w-100"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            dynamicForm.controls[field.name].touched &&
+            dynamicForm.controls[field.name].invalid
+        }"
+      >
+        <option *ngFor="let option of field.options" [value]="option.id">
+          {{ option.title }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Select -->
+    <div *ngIf="field.type === 'select'">
+      <select
+        [formControlName]="field.name"
+        class="w-100"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            dynamicForm.controls[field.name].touched &&
+            dynamicForm.controls[field.name].invalid
+        }"
+      >
+        <option *ngFor="let option of field.options" [value]="option.id">
+          {{ getFormattedValue(option) }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Select Group -->
+    <div *ngIf="field.type === 'selectGroup'">
+      <select
+        [formControlName]="field.name"
+        class="w-100"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            dynamicForm.controls[field.name].touched &&
+            dynamicForm.controls[field.name].invalid
+        }"
+      >
+        <optgroup *ngFor="let group of field.options" [label]="group.title">
+          <option *ngFor="let item of group.subGroupOptions" [value]="item.id">
+            {{ getFormattedValue(item) }}
+          </option>
+        </optgroup>
+      </select>
+    </div>
+
+    <!-- Date -->
+    <div *ngIf="field.type === 'date'">
+      <input
+        type="date"
+        [formControlName]="field.name"
+        class="w-100"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            dynamicForm.controls[field.name].touched &&
+            dynamicForm.controls[field.name].invalid
+        }"
+      />
+    </div>
+
+    <!-- Time -->
+    <div *ngIf="field.type === 'time'">
+      <input
+        type="time"
+        [formControlName]="field.name"
+        class="w-100"
+        [ngClass]="{
+          'ng-dirty ng-invalid':
+            dynamicForm.controls[field.name].touched &&
+            dynamicForm.controls[field.name].invalid
+        }"
+      />
+    </div>
+
+    <!-- File Upload -->
+    <div *ngIf="field.type === 'file'">
+      <input
+        type="file"
+        accept="image/*,video/*"
+        (change)="FileUploader($event)"
+        [formControlName]="field.name"
+      />
+      <div *ngIf="field?.urlFile">
+        <img [src]="field?.urlFile" alt="Uploaded Image" style="width: 200px" />
+      </div>
+    </div>
+    <div *ngIf="field.type === 'radio'">
+      <div *ngFor="let option of field.options">
+        <input
+          type="radio"
+          [formControlName]="field.name"
+          [value]="option.id"
+          [id]="option.id"
+        />
+        <label [for]="option.id">{{ option.title }}</label>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Submit Button -->
+<div class="d-flex justify-content-center pt-3">
+  <div class="w-30">
+    <button class="p-3 w-100 h-100" (click)="onSubmit()">Sauvegarder</button>
+  </div>
+</div>
