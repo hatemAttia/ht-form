@@ -262,8 +262,8 @@ export class FormHtComponent implements OnInit, AfterViewInit {
       const formData = this.dynamicForm.getRawValue();
 
       // Append uploaded files to formData if any
-      if (this.uploadedFiles) {
-        formData.file = this.uploadedFiles;
+      if (this.selectedImages) {
+        formData.file = this.selectedImages;
       }
 
       // this.formsService.emitFormData({
@@ -376,5 +376,62 @@ export class FormHtComponent implements OnInit, AfterViewInit {
       inputElement.value =
         '+216 ' + currentValue.replace(filed.preValuePhone, '');
     }
+  }
+  selectedImages: File[] = [];
+  imagePreviews: (string | ArrayBuffer | null)[] = [];
+  isDragging: boolean = false;
+  isUploadingImage: boolean = false;
+  uploadImageProgress: number = 0;
+
+  onImagesSelected(event: any) {
+    const files = Array.from(event.target.files) as File[];
+    if (files && files.length > 0) {
+      this.selectedImages.push(...files);
+
+      for (let file of files) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.imagePreviews.push(reader.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  }
+
+  onImageDragOver(event: DragEvent) {
+    event.preventDefault();
+    this.isDragging = true;
+  }
+
+  onImageDragLeave(event: DragEvent) {
+    event.preventDefault();
+    this.isDragging = false;
+  }
+
+  onImageDrop(event: DragEvent) {
+    event.preventDefault();
+    this.isDragging = false;
+
+    const files = Array.from(event.dataTransfer?.files || []) as File[];
+    if (files && files.length > 0) {
+      this.selectedImages.push(...files);
+
+      for (let file of files) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.imagePreviews.push(reader.result);
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  }
+
+  removeImage(index: number) {
+    this.selectedImages.splice(index, 1);
+    this.imagePreviews.splice(index, 1);
+  }
+
+  calculSizeFile(file: any) {
+    return (file.size / 1024).toFixed(1);
   }
 }
