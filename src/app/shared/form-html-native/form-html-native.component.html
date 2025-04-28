@@ -154,17 +154,7 @@
     </div>
 
     <!-- File Upload -->
-    <div *ngIf="field.type === 'file'">
-      <input
-        type="file"
-        accept="image/*,video/*"
-        (change)="FileUploader($event)"
-        [formControlName]="field.name"
-      />
-      <div *ngIf="field?.urlFile">
-        <img [src]="field?.urlFile" alt="Uploaded Image" style="width: 200px" />
-      </div>
-    </div>
+
     <div *ngIf="field.type === 'radio'">
       <div *ngFor="let option of field.options">
         <input

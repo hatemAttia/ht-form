@@ -109,3 +109,256 @@ button:focus {
     width: 50%; /* Adjust width for smaller screens */
   }
 }
+
+.w-100 {
+  width: 100%;
+}
+
+.upload-section {
+  width: 100%;
+}
+.upload-section h3 {
+  margin: 0 0 16px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.dropzone {
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+  padding: 32px 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.dropzone.active {
+  border-color: #3366ff;
+  background-color: rgba(51, 102, 255, 0.05);
+}
+
+.dropzone.has-file {
+  background-color: #f0f7ff;
+  border-color: #3366ff;
+  padding: 16px;
+}
+
+.dropzone-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.dropzone-content i {
+  font-size: 2.5rem;
+  color: #999;
+  margin-bottom: 8px;
+}
+
+.dropzone-content p {
+  margin: 0;
+  color: #666;
+}
+
+.or-divider {
+  margin: 8px 0;
+  font-size: 0.875rem;
+  color: #999;
+}
+
+.file-select-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.875rem;
+  color: #333;
+}
+
+.file-select-button:hover {
+  background-color: #e0e0e0;
+}
+
+.file-select-button input {
+  display: none;
+}
+
+.file-selected {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.file-info i {
+  font-size: 1.5rem;
+  color: #217346; /* Excel green color */
+}
+
+.file-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.file-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.file-size {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.upload-progress {
+  margin-top: 16px;
+}
+
+:host ::ng-deep .upload-progress .p-progressbar {
+  height: 8px;
+}
+
+.dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.cancel-button,
+.import-button {
+  transition: all 0.2s ease;
+}
+
+.import-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media screen and (max-width: 768px) {
+  .template-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .template-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .dialog-footer {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .dialog-footer button {
+    width: 100%;
+  }
+}
+
+/* Animation for dropzone */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.dropzone.active {
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Smooth transitions */
+.dropzone,
+.file-select-button,
+button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.preview-image {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* Adjust icon for image */
+.dropzone-content i {
+  font-size: 2.5rem;
+  color: #999;
+  margin-bottom: 8px;
+}
+
+/* When image selected, adapt layout */
+.file-info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 12px;
+}
+.file-selected {
+  display: flex;
+  flex-direction: column; /* Display vertically */
+  gap: 12px; /* Add space between files */
+  margin-top: 16px;
+}
+
+/* Each file info is in its own box */
+.file-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 2px solid #3366ff; /* Blue border */
+  border-radius: 8px;
+  background-color: #f9f9ff;
+}
+
+/* Preview image inside the box */
+.preview-image {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+/* File name and size vertical */
+.file-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Remove button */
+.remove-button {
+  margin-left: auto; /* Push to the end */
+  background: transparent;
+  border: none;
+  color: #f00;
+  max-width: 40px !important;
+
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  color: #d00;
+}

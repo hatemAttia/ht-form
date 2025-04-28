@@ -249,7 +249,7 @@
       </p-calendar>
     </ng-container>
     <ng-container *ngIf="field.type === 'file'">
-      <div
+      <!-- <div
         *ngIf="field?.urlFile"
         style="
           display: flex;
@@ -271,7 +271,79 @@
         [customUpload]="true"
         (onSelect)="FileUploader($event)"
         id="activityLogo"
-      ></p-fileUpload>
+      ></p-fileUpload> -->
+
+      <!-- <input
+          type="file"
+          accept="image/*,video/*"
+          (change)="FileUploader($event)"
+          [formControlName]="field.name"
+        /> -->
+
+      <div class="d-flex">
+        <div *ngIf="field?.urlFile">
+          <img
+            [src]="field?.urlFile"
+            alt="Uploaded Image"
+            style="width: 200px"
+          />
+        </div>
+
+        <div class="upload-section">
+          <div
+            class="dropzone"
+            [class.active]="isDragging"
+            [class.has-file]="selectedImages.length > 0"
+            (dragover)="onImageDragOver($event)"
+            (dragleave)="onImageDragLeave($event)"
+            (drop)="onImageDrop($event)"
+          >
+            <div class="dropzone-content" *ngIf="selectedImages.length === 0">
+              <i class="pi pi-image"></i>
+              <p>Glissez-déposez vos images ici</p>
+              <p class="or-divider">ou</p>
+              <label class="file-select-button">
+                <span>Parcourir les fichiers</span>
+                <input
+                  type="file"
+                  [multiple]="true"
+                  accept="image/*,video/*"
+                  [formControlName]="field.name"
+                  (change)="onImagesSelected($event)"
+                />
+              </label>
+            </div>
+
+            <div class="file-selected" *ngIf="selectedImages.length > 0">
+              <div
+                *ngFor="let image of imagePreviews; let i = index"
+                class="file-info"
+              >
+                <img [src]="image" alt="Aperçu" class="preview-image" />
+                <div class="file-details">
+                  <span class="file-name">{{ selectedImages[i]?.name }}</span>
+                  <span class="file-size"
+                    >{{ calculSizeFile(selectedImages[i]) }} KB</span
+                  >
+                </div>
+                <button
+                  pButton
+                  icon="pi pi-times"
+                  class="remove-button"
+                  (click)="removeImage(i)"
+                ></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Progress (optional) -->
+          <!--
+            <div class="upload-progress" *ngIf="isUploadingImage">
+              <p-progressBar [value]="uploadImageProgress" [showValue]="true"></p-progressBar>
+            </div>
+            -->
+        </div>
+      </div>
       <!-- Content Template -->
     </ng-container>
     <br />
