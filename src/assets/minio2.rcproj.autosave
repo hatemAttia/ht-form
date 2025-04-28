@@ -1,0 +1,110 @@
+<RealityCapture version="1.5.1.118081" sceneRevision="46" sceneId="{B305E22C-412C-4D78-823F-4D6688EF2787}">
+    <autosave>
+        <AutoSaveMetadata
+            machine="PEC-AC-33.groupepec.com"
+            instance="1"
+            resourceCachePath="D:\RealityCapture.Temp\1\"
+        />
+        <resource fileName="C:\Users\PEC\Desktop\minion 2\minio2\model452FFBECFE0B43E2977602635BBD02CB12291.dat"/>
+        <resource fileName="C:\Users\PEC\Desktop\minion 2\minio2\model5488C582BE484AF4B33A867281102E7312293.dat"/>
+        <resource fileName="C:\Users\PEC\Desktop\minion 2\minio2\model52C1018DE8AE42B2928B1D8B813873DE12291.dat"/>
+        <resource fileName="C:\Users\PEC\Desktop\minion 2\minio2\modelBE55541D25E049D2B42165EBF074E42C12293.dat"/>
+        <resource fileName="C:\Users\PEC\Desktop\minion 2\minio2\model152A27D467DD4199AF5E8B2A923FF1A912294.dat"/>
+        <resource fileName="C:\Users\PEC\Desktop\minion 2\minio2\model7720118188E04F3B90C9506897627A54_tex0_0.dat"/>
+        <resource fileName="C:\Users\PEC\Desktop\minion 2\minio2\model7720118188E04F3B90C9506897627A54_tex0_1.dat"/>
+    </autosave>
+    <certificates>
+    </certificates>
+    <coordinates>
+        <projectCoordinates index="-1"/>
+    </coordinates>
+    <source>
+        <input fileName="IMG_20250212_141139.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141158.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141201.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141203.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141206.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141209.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141212.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141226.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141231.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141239.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141243.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141253.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141255.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141258.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141300.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141303.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141320.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141325.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141331.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141334.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141338.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141344.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141347.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141348.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141350.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141351.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141353.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141354.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+        <input fileName="IMG_20250212_141356.jpg" width="4624" height="3472" wicPixelFormat="6FDDC324-4E03-4BFE-B185-3D77768DC90C"/>
+    </source>
+    <reconstructions selectedComponentId="{7E8FB160-A1AC-4E6D-AE31-5A1796F67F16}">
+        <component name="Component 0" id="{8B06CF2D-5FB7-49F9-AC11-F6BCC12C7E54}" classId="{21845778-D8E3-435C-9493-2E39FEE10F29}" fileName="minio2.autosave\sfm0.dat" selectedModel="0" sfmVisible="0"> 
+            <colorNormalization name="colorNormalization" fileName="minio2.autosave\colorNormalization0.dat" />
+            <metadata fileName="minio2.autosave\metadata8.dat"/>
+            <model name="Model 1" fileName="minio2.autosave\model0.dat" unwrappedArea="0.0000000000000000e+00" unwrappLargeTriRemThr="0.000000" minimalTexelSize="0.0000000000000000e+00" texturesUtilization="0.0000000000000000e+00" texelSize="0.0000000000000000e+00" chartsGutterSize="0" averageEdgeLength="0.0000000000000000e+00" coloringStyle="10" texturingStyle="2147483647" minimalAdaptiveTexelSize="0.0000000000000000e+00" maximalAdaptiveTexelSize="0.0000000000000000e+00" unwrappingStyle="2147483647" unwrappingMethod ="2147483647" unwrapModifiers ="0" unwrapName="" cleanMark="2" selectedTxLayerGuid="{00000000-0000-0000-0000-000000000000}" depthMapsLibVersion="1"  >
+            </model>
+        </component>
+        <component name="Component 1" id="{617CFC91-24B6-414B-AD2B-B5BF50940911}" classId="{21845778-D8E3-435C-9493-2E39FEE10F29}" fileName="minio2.autosave\sfm1.dat" selectedModel="-1" sfmVisible="1"> 
+            <colorNormalization name="colorNormalization" fileName="minio2.autosave\colorNormalization1.dat" />
+            <metadata fileName="minio2.autosave\metadata9.dat"/>
+        </component>
+        <component name="Component 2" id="{7F5519C4-1E9A-49D9-86F0-001AD2A9A96A}" classId="{21845778-D8E3-435C-9493-2E39FEE10F29}" fileName="minio2.autosave\sfm2.dat" selectedModel="-1" sfmVisible="1"> 
+            <colorNormalization name="colorNormalization" fileName="minio2.autosave\colorNormalization2.dat" />
+            <metadata fileName="minio2.autosave\metadata10.dat"/>
+        </component>
+        <component name="Component 3" id="{F3B42A8E-048A-4E42-B28B-723EED3AB74C}" classId="{21845778-D8E3-435C-9493-2E39FEE10F29}" fileName="minio2.autosave\sfm3.dat" selectedModel="-1" sfmVisible="1"> 
+            <metadata fileName="minio2.autosave\metadata11.dat"/>
+        </component>
+        <component name="Component 0 (1)" id="{7E8FB160-A1AC-4E6D-AE31-5A1796F67F16}" classId="{21845778-D8E3-435C-9493-2E39FEE10F29}" fileName="minio2.autosave\sfm4.dat" selectedModel="6" sfmVisible="0"> 
+            <colorNormalization name="colorNormalization" fileName="minio2.autosave\colorNormalization3.dat" />
+            <metadata fileName="minio2.autosave\metadata12.dat"/>
+            <model name="Model 1" fileName="minio2.autosave\model1.dat" unwrappedArea="3.8366470987573889e+03" unwrappLargeTriRemThr="10.000000" minimalTexelSize="1.2091813609004021e-02" texturesUtilization="8.6665153503417969e-01" texelSize="9.0843848884105682e-03" chartsGutterSize="2" averageEdgeLength="6.5869691273461678e-02" coloringStyle="11" texturingStyle="2" minimalAdaptiveTexelSize="0.0000000000000000e+00" maximalAdaptiveTexelSize="0.0000000000000000e+00" unwrappingStyle="0" unwrappingMethod ="0" unwrapModifiers ="0" unwrapName="77201181-88E0-4F3B-90C9-506897627A546063edf2be1f7200fa292d07d803f775" cleanMark="2" selectedTxLayerGuid="{42EBFF28-72D0-4B85-AA41-F86AB1E59DE3}" depthMapsLibVersion="1"  >
+                <textures>
+                    <textureLayer texturingStyle="2" inputLayer="1" computationTime="77" id="{42EBFF28-72D0-4B85-AA41-F86AB1E59DE3}" />
+                </textures>
+            </model>
+            <model name="Model 2" fileName="minio2.autosave\model2.dat" unwrappedArea="0.0000000000000000e+00" unwrappLargeTriRemThr="0.000000" minimalTexelSize="0.0000000000000000e+00" texturesUtilization="0.0000000000000000e+00" texelSize="0.0000000000000000e+00" chartsGutterSize="0" averageEdgeLength="0.0000000000000000e+00" coloringStyle="10" texturingStyle="2147483647" minimalAdaptiveTexelSize="0.0000000000000000e+00" maximalAdaptiveTexelSize="0.0000000000000000e+00" unwrappingStyle="2147483647" unwrappingMethod ="2147483647" unwrapModifiers ="0" unwrapName="" cleanMark="2" selectedTxLayerGuid="{00000000-0000-0000-0000-000000000000}" depthMapsLibVersion="1"  >
+            </model>
+            <model name="Model 3" fileName="minio2.autosave\model3.dat" unwrappedArea="0.0000000000000000e+00" unwrappLargeTriRemThr="0.000000" minimalTexelSize="0.0000000000000000e+00" texturesUtilization="0.0000000000000000e+00" texelSize="0.0000000000000000e+00" chartsGutterSize="0" averageEdgeLength="0.0000000000000000e+00" coloringStyle="10" texturingStyle="2147483647" minimalAdaptiveTexelSize="0.0000000000000000e+00" maximalAdaptiveTexelSize="0.0000000000000000e+00" unwrappingStyle="2147483647" unwrappingMethod ="2147483647" unwrapModifiers ="0" unwrapName="" cleanMark="2" selectedTxLayerGuid="{00000000-0000-0000-0000-000000000000}" depthMapsLibVersion="1"  >
+            </model>
+            <model name="Model 4" fileName="minio2.autosave\model4.dat" unwrappedArea="0.0000000000000000e+00" unwrappLargeTriRemThr="0.000000" minimalTexelSize="0.0000000000000000e+00" texturesUtilization="0.0000000000000000e+00" texelSize="0.0000000000000000e+00" chartsGutterSize="0" averageEdgeLength="0.0000000000000000e+00" coloringStyle="10" texturingStyle="2147483647" minimalAdaptiveTexelSize="0.0000000000000000e+00" maximalAdaptiveTexelSize="0.0000000000000000e+00" unwrappingStyle="2147483647" unwrappingMethod ="2147483647" unwrapModifiers ="0" unwrapName="" cleanMark="2" selectedTxLayerGuid="{00000000-0000-0000-0000-000000000000}" depthMapsLibVersion="1"  >
+            </model>
+            <model name="Model 5" fileName="minio2.autosave\model5.dat" unwrappedArea="0.0000000000000000e+00" unwrappLargeTriRemThr="0.000000" minimalTexelSize="1.2000665999948978e-02" texturesUtilization="0.0000000000000000e+00" texelSize="0.0000000000000000e+00" chartsGutterSize="0" averageEdgeLength="0.0000000000000000e+00" coloringStyle="2147483647" texturingStyle="2147483647" minimalAdaptiveTexelSize="0.0000000000000000e+00" maximalAdaptiveTexelSize="0.0000000000000000e+00" unwrappingStyle="2147483647" unwrappingMethod ="2147483647" unwrapModifiers ="0" unwrapName="" cleanMark="0" selectedTxLayerGuid="{00000000-0000-0000-0000-000000000000}" depthMapsLibVersion="0"  >
+            </model>
+            <model name="Model 6" fileName="minio2.autosave\model6.dat" unwrappedArea="0.0000000000000000e+00" unwrappLargeTriRemThr="0.000000" minimalTexelSize="0.0000000000000000e+00" texturesUtilization="0.0000000000000000e+00" texelSize="0.0000000000000000e+00" chartsGutterSize="0" averageEdgeLength="0.0000000000000000e+00" coloringStyle="2147483647" texturingStyle="2147483647" minimalAdaptiveTexelSize="0.0000000000000000e+00" maximalAdaptiveTexelSize="0.0000000000000000e+00" unwrappingStyle="2147483647" unwrappingMethod ="2147483647" unwrapModifiers ="0" unwrapName="" cleanMark="0" selectedTxLayerGuid="{00000000-0000-0000-0000-000000000000}" depthMapsLibVersion="0"  >
+            </model>
+            <model name="Model 7" fileName="minio2.autosave\model7.dat" unwrappedArea="1.9557006998261386e+03" unwrappLargeTriRemThr="10.000000" minimalTexelSize="1.2000665999948978e-02" texturesUtilization="8.3108425140380859e-01" texelSize="6.6695697605609894e-03" chartsGutterSize="2" averageEdgeLength="7.1411233065620611e-02" coloringStyle="11" texturingStyle="2" minimalAdaptiveTexelSize="0.0000000000000000e+00" maximalAdaptiveTexelSize="0.0000000000000000e+00" unwrappingStyle="0" unwrappingMethod ="0" unwrapModifiers ="0" unwrapName="82113D68-FF22-42E8-B5E6-593D6470C15F20b47816ae7d77005aa983078883d9a8" cleanMark="0" selectedTxLayerGuid="{6ED91FB1-3F95-4860-B0FA-DF1006D7A17D}" depthMapsLibVersion="0"  >
+                <textures>
+                    <textureLayer texturingStyle="2" inputLayer="1" computationTime="50" id="{6ED91FB1-3F95-4860-B0FA-DF1006D7A17D}" />
+                </textures>
+            </model>
+        </component>
+        <component name="Component 1 (1)" id="{3453C622-7829-4FE3-A45B-1162FE2BB05A}" classId="{21845778-D8E3-435C-9493-2E39FEE10F29}" fileName="minio2.autosave\sfm5.dat" selectedModel="-1" sfmVisible="1"> 
+            <colorNormalization name="colorNormalization" fileName="minio2.autosave\colorNormalization4.dat" />
+            <metadata fileName="minio2.autosave\metadata13.dat"/>
+        </component>
+        <component name="Component 2 (1)" id="{F79261D3-C1BD-4756-9D04-A9DBCC7F0BCE}" classId="{21845778-D8E3-435C-9493-2E39FEE10F29}" fileName="minio2.autosave\sfm6.dat" selectedModel="-1" sfmVisible="1"> 
+            <colorNormalization name="colorNormalization" fileName="minio2.autosave\colorNormalization5.dat" />
+            <metadata fileName="minio2.autosave\metadata14.dat"/>
+        </component>
+        <component name="Component 3 (1)" id="{7F1FB0FE-1977-4A00-94D3-1E3ADBA07FEF}" classId="{21845778-D8E3-435C-9493-2E39FEE10F29}" fileName="minio2.autosave\sfm7.dat" selectedModel="-1" sfmVisible="1"> 
+            <metadata fileName="minio2.autosave\metadata15.dat"/>
+        </component>
+    </reconstructions>
+    <entities name="entities" fileName="minio2.autosave\entities1.dat"/>
+    <animation fileName="minio2.autosave\animation0.dat"/>
+    <controlpoints fileName="minio2.autosave\controlpoints1.dat"/>
+    <appConfig fileName="minio2.autosave\appConfig1.dat" />
+</RealityCapture>

@@ -73,8 +73,6 @@ export class FormHtComponent implements OnInit, AfterViewInit {
         label: 'Text Field',
         styleClass: { input: 'custom-input' },
         style: { input: { 'background-color': '#f9f9f9' } },
-        options: [],
-        urlFile: '',
       },
       {
         name: 'numberField',
