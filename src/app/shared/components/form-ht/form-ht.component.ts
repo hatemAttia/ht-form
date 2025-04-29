@@ -12,7 +12,7 @@ import {
   DynamicDialogConfig,
   DynamicDialogRef,
 } from 'primeng/dynamicdialog';
-import { FormFieldHT } from '../types/formFieldHT';
+import { FormFieldHT } from '../../types/formFieldHT';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { InputSwitchModule } from 'primeng/inputswitch';

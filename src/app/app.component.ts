@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { RouterOutlet } from '@angular/router';
 
-import { FormHtComponent } from './shared/form-ht/form-ht.component';
+import { FormHtComponent } from './shared/components/form-ht/form-ht.component';
 
 @Component({
   selector: 'app-root',
