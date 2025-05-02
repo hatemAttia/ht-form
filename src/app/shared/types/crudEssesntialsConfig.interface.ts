@@ -5,7 +5,5 @@ export interface crudEssentialsConfig {
     enableTable?: boolean;
     tableConfig?: tableConfig;
     enableAdd?: boolean;
-    
-    
 
 }

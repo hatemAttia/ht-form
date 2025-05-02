@@ -1,0 +1,51 @@
+<p-table #dt styleClass="p-datatable-gridlines p-datatable-striped" [columns]="cols" [value]="data" [tableStyle]="{ 'min-width': '50rem' }">
+    <ng-template pTemplate="caption">
+        <div class="flex">
+            <p-iconField iconPosition="left" class="ml-auto">
+                <p-inputIcon>
+                    <i class="pi pi-search"></i>
+                </p-inputIcon>
+                <input 
+                    pInputText 
+                    type="text" 
+                    (input)="handleSearch($event)"
+                    placeholder="Search keyword" />
+            </p-iconField>
+        </div>
+        
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            @for (col of columns; track col) {
+            <th class="text-center" [pSortableColumn]="tableConfig?.enableSort ? col.field : null">
+            {{ col.header }}
+            @if (tableConfig?.enableSort) {
+                <p-sortIcon [field]="col.field"></p-sortIcon>
+            }
+            </th>
+            }
+            @if (tableConfig?.enableActions) {
+                <th class="text-center">
+                    {{ tableConfig?.actionsHeader || 'Actions' }}
+                </th>
+                }
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+            @for (col of columns; track col) {
+            <td class="text-center">
+                {{ col.formatFn ? col.formatFn(rowData[col.field], rowData) : rowData[col.field] }}
+            </td>
+            }
+        </tr>
+    </ng-template>
+
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="100%" style="text-align: center">No records found</td>
+        </tr>
+       
+    </ng-template>
+
+</p-table>

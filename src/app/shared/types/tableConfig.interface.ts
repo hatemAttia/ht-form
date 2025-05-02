@@ -4,10 +4,11 @@ import { actionDef } from "./actionDef.interface";
 export interface tableConfig {
 
     columns: columnDef[]
-    data: any[] | null;
+    data: any[];
 
     enableActions?: boolean;
-    actions: actionDef[]
+    actionsHeader?: string;
+    actions?: actionDef[]
 
     enableSearch?: boolean;
     enableSort?: boolean;
