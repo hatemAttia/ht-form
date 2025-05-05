@@ -58,6 +58,7 @@ export class FormHtComponent implements OnInit, AfterViewInit {
   styleClassToggle: any;
   submitting = true;
   uploadedFiles: any = [];
+  mode: string = 'add';
   constructor(
     public ref: DynamicDialogRef,
     private formBuilder: FormBuilder,
@@ -67,6 +68,7 @@ export class FormHtComponent implements OnInit, AfterViewInit {
   ) {
     // this.formFields = this.config.data.formFields;
     this.formFields = this.config.data.fields;
+    this.mode = this.config.data.mode
   }
 
   ngAfterViewInit(): void {}
@@ -74,6 +76,7 @@ export class FormHtComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
 
     this.createForm();
+    
     this.populateSubcategories();
   }
 

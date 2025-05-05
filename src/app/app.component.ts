@@ -42,7 +42,6 @@ export class AppComponent {
       name: 'name',
       label: 'Full Name',
       type: 'text',
-      value: 'John Doe',
       validators: [Validators.required],
       placeHolder: 'Enter full name'
     },
@@ -50,7 +49,6 @@ export class AppComponent {
       name: 'age',
       label: 'Age',
       type: 'number',
-      value: 30,
       validators: [Validators.required, Validators.min(0)],
       placeHolder: 'Enter age'
     },
@@ -58,7 +56,6 @@ export class AppComponent {
       name: 'email',
       label: 'Email',
       type: 'text',
-      value: 'email@exemple.com',
       validators: [Validators.required, Validators.email],
       placeHolder: 'Enter email address'
     },
@@ -66,7 +63,6 @@ export class AppComponent {
       name: 'phone',
       label: 'Phone Number',
       type: 'phoneNumber',
-      value: '1234567890',
       validators: [Validators.required],
       placeHolder: 'Enter phone number'
     }
@@ -87,6 +83,7 @@ export class AppComponent {
           type: 'custom', 
           name: 'View Details', 
           icon: 'pi pi-eye', 
+          tooltip: 'View Details',
           component: DetailComponent,
           data: { title: 'User Details' }
         }

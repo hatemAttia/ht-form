@@ -14,7 +14,7 @@
     <ng-template pTemplate="header" let-columns>
         <tr>
             @for (col of columns; track col) {
-            <th class="text-center" [pSortableColumn]="tableConfig?.enableSort ? col.field : null">
+            <th [class]="'text-' + (col.textAlign || 'left')" [pSortableColumn]="tableConfig?.enableSort ? col.field : null">
                 {{ col.header }}
                 @if (tableConfig?.enableSort) {
                 <p-sortIcon [field]="col.field"></p-sortIcon>
@@ -31,7 +31,7 @@
     <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr>
             @for (col of columns; track col) {
-            <td class="text-center">
+            <td [class]="'text-' + (col.textAlign || 'left')">
                 {{ col.formatFn ? col.formatFn(rowData[col.field], rowData) : rowData[col.field] }}
             </td>
             }

@@ -7,11 +7,13 @@ import { IconFieldModule } from 'primeng/iconfield';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputIconModule } from 'primeng/inputicon';
-import { DialogService } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { CustomActionDef } from '../../types/actionDef.interface';
 import { ConfirmationService } from 'primeng/api';
 import { TooltipModule } from 'primeng/tooltip';
 import { ButtonModule } from 'primeng/button';
+import { FormHtComponent } from '../form-ht/form-ht.component';
+import { crudEssentialsConfig } from '../../types/crudEssesntialsConfig.interface';
 
 
 
@@ -41,17 +43,21 @@ export class TableComponent implements OnInit {
 
   ) { }
 
-  @Input() tableConfig: tableConfig | undefined
-  @Output() customAction = new EventEmitter<{action: string, data: any}>();
+  @Input() crudEssentialsConfig!: crudEssentialsConfig
+  tableConfig: tableConfig | undefined
+  @Output() customAction = new EventEmitter<{ action: string, data: any }>();
   @Output() rowEdit = new EventEmitter<any>();
   @Output() rowDelete = new EventEmitter<any>();
 
+  ref: DynamicDialogRef | undefined;
 
   cols: any[] = [];
   data: any[] = [];
 
   ngOnInit(): void {
-
+    if (this.crudEssentialsConfig) {
+      this.tableConfig = this.crudEssentialsConfig.tableConfig;
+    }
 
     if (this.tableConfig?.columns) {
       this.cols = this.tableConfig.columns
@@ -65,13 +71,13 @@ export class TableComponent implements OnInit {
 
   get processedActions(): any[] {
     // Add some debugging to verify what's happening
-    
+
     if (!this.tableConfig?.actions || !Array.isArray(this.tableConfig.actions)) {
       return [];
     }
-    
+
     const processed = this.tableConfig.actions.map(action => {
-      
+
       if (typeof action === 'string') {
         // Convert standard action strings to actionDef objects
         if (action === 'edit') {
@@ -84,9 +90,9 @@ export class TableComponent implements OnInit {
             visible: () => true  // Make sure it's always visible by default
           };
           console.log('Edit action:', editAction);
-          
+
           return editAction
-          
+
         } else if (action === 'delete') {
           return {
             type: 'delete',
@@ -98,7 +104,7 @@ export class TableComponent implements OnInit {
           };
         }
       } else if (action && typeof action === 'object') {
-        
+
         if ((action as CustomActionDef).type === 'custom') {
           // Custom action with component
           const customAction = action as CustomActionDef;
@@ -109,27 +115,38 @@ export class TableComponent implements OnInit {
             visible: customAction.visible || (() => true)  // Default visible if not provided
           };
         } else {
-          
+
           return action;
         }
       }
       return null;
     }).filter(a => a !== null);
-    
+
     return processed;
   }
 
   // Handle standard edit action
   handleEdit(rowData: any): void {
-    
-      this.rowEdit.emit(rowData);
-    
+
+    this.ref = this.dialogService.open(FormHtComponent, {
+      header: this.tableConfig?.editHeader || 'Edit Item',
+      width: this.crudEssentialsConfig.modalWidth || '50%',
+      contentStyle: { 'max-height': '100vh', overflow: 'auto' },
+      data: {
+        fields: this.crudEssentialsConfig.formConfig?.fields.map(field => ({
+          ...field,
+          value: rowData[field.name]
+        })),
+        mode: 'edit'
+      },
+    })
+
   }
 
   // Handle standard delete action with confirmation
   handleDelete(rowData: any): void {
     const config = this.tableConfig?.deleteConfirmation || {};
-    
+
     this.confirmationService.confirm({
       message: config.message || 'Are you sure you want to delete this item?',
       header: config.header || 'Confirm Delete',
@@ -137,9 +154,9 @@ export class TableComponent implements OnInit {
       acceptLabel: config.acceptLabel || 'Yes',
       rejectLabel: config.rejectLabel || 'No',
       accept: () => {
-        
-          this.rowDelete.emit(rowData);
-        
+
+        this.rowDelete.emit(rowData);
+
       }
     });
   }
@@ -168,7 +185,7 @@ export class TableComponent implements OnInit {
   getButtonSeverity(action: string) {
     switch (action) {
       case 'edit':
-        return 'info';
+        return 'primary';
       case 'delete':
         return 'danger';
       default:
@@ -176,6 +193,6 @@ export class TableComponent implements OnInit {
     }
   }
 
-  
+
 
 }

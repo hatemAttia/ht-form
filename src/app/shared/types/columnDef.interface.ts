@@ -9,6 +9,7 @@ export interface columnDef {
     searchable?: boolean;
     width?: string;
     order?: number;
+    textAlign?: 'left' | 'right' | 'center';
     formatFn?: (value: any, row?: any) => string;
 
 }

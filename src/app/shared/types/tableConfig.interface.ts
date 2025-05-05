@@ -18,7 +18,9 @@ export interface tableConfig {
     };
 
     onEdit?: (rowData: any) => void;
+    editHeader?: string;
     onDelete?: (rowData: any) => void;
+    deleteHeader?: string;
 
     enableSearch?: boolean;
     enableSort?: boolean;
