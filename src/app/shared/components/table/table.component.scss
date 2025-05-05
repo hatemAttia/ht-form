@@ -1,3 +1,11 @@
 .text-center {
-    text-align: center;
+    text-align: left;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
 }

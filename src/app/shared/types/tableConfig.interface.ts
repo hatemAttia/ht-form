@@ -1,5 +1,5 @@
+import { CustomActionDef, StandardActionType } from "./actionDef.interface";
 import { columnDef } from "./columnDef.interface";
-import { actionDef } from "./actionDef.interface";
 
 export interface tableConfig {
 
@@ -8,7 +8,17 @@ export interface tableConfig {
 
     enableActions?: boolean;
     actionsHeader?: string;
-    actions?: actionDef[]
+    actions?: (StandardActionType | CustomActionDef)[];
+
+    deleteConfirmation?: {
+        message?: string;
+        header?: string;
+        acceptLabel?: string;
+        rejectLabel?: string;
+    };
+
+    onEdit?: (rowData: any) => void;
+    onDelete?: (rowData: any) => void;
 
     enableSearch?: boolean;
     enableSort?: boolean;

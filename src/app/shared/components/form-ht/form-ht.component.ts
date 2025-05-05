@@ -47,7 +47,7 @@ import { InputMaskModule } from 'primeng/inputmask';
     FileUploadModule,
     InputMaskModule,
   ],
-  providers: [DynamicDialogRef, DynamicDialogConfig],
+  
   templateUrl: './form-ht.component.html',
   styleUrl: './form-ht.component.scss',
 })
@@ -66,171 +66,13 @@ export class FormHtComponent implements OnInit, AfterViewInit {
     private sanitizer: DomSanitizer
   ) {
     // this.formFields = this.config.data.formFields;
-    this.formFields = [
-      {
-        name: 'textField',
-        type: 'text',
-        label: 'Text Field',
-        styleClass: { input: 'custom-input' },
-        style: { input: { 'background-color': '#f9f9f9' } },
-      },
-      {
-        name: 'numberField',
-        type: 'number',
-        label: 'Number Field',
-        styleClass: { input: 'custom-input' },
-        style: { input: { 'background-color': '#f9f9f9' } },
-        options: [],
-        validators: [Validators.required],
-        urlFile: '',
-      },
-      {
-        name: 'passwordField',
-        type: 'password',
-        label: 'Password Field',
-        styleClass: { input: 'custom-input' },
-        style: { input: { 'background-color': '#f9f9f9' } },
-        options: [],
-        validators: [Validators.required],
-        urlFile: '',
-      },
-      {
-        name: 'phoneNumber',
-        type: 'phoneNumber',
-        validators: [Validators.required],
-        label: 'Phone Number',
-        styleClass: { input: 'custom-input' },
-        style: { input: { 'background-color': '#f9f9f9' } },
-        options: [],
-        preValuePhone: '+216 ',
-        placeHolder: '+216 ... ...',
-        urlFile: '',
-      },
-      {
-        name: 'checkboxField',
-        type: 'checkbox',
-        label: 'Checkbox Field',
-        validators: [Validators.required],
-        styleClass: { input: 'custom-checkbox' },
-        style: { input: { 'background-color': '#f9f9f9' } },
-        options: [],
-        urlFile: '',
-      },
-      {
-        name: 'selectField',
-        type: 'select',
-        label: 'Select Field',
-        filter: true,
-        validators: [Validators.required],
-        filterBy: 'title',
-        // Enable filtering
-        styleClass: { input: 'custom-select' },
-        style: { input: { 'background-color': '#f9f9f9' } },
-        options: [
-          { id: 'option1', title: 'Option 1' },
-          { id: 'option2', title: 'Option 2' },
-          { id: 'option3', title: 'Option 3' },
-          { id: 'option1', title: 'Option 1' },
-          { id: 'option2', title: 'Option 2' },
-          { id: 'option3', title: 'Option 3' },
-        ],
-        urlFile: '',
-      },
-      {
-        name: 'multiselectField',
-        type: 'many-select',
-        label: 'Multiple Select Field',
-        filter: true,
-        filterBy: 'title',
-        value: ['option1'],
-        styleClass: { input: 'custom-multiselect' },
-        style: { input: { 'background-color': '#f9f9f9' } },
-        options: [
-          { id: 'option1', title: 'Option 1' },
-          { id: 'option2', title: 'Option 2' },
-          { id: 'option3', title: 'Option 3' },
-        ],
-        urlFile: '',
-      },
-      {
-        name: 'selectGroupField',
-        type: 'selectGroup',
-        label: 'Select Group Field',
-        filter: true,
-        filterBy: 'title',
-        value: 'option1',
-        styleClass: { input: 'custom-select-group' },
-        subGroupOptions: 'subGroupOptions',
-        style: { input: { 'background-color': '#f9f9f9' } },
-        options: [
-          {
-            title: 'Group 1',
-            subGroupOptions: [
-              { id: 'option1', title: 'Option 1' },
-              { id: 'option2', title: 'Option 2' },
-            ],
-          },
-          {
-            title: 'Group 2',
-            subGroupOptions: [
-              { id: 'option3', title: 'Option 3' },
-              { id: 'option4', title: 'Option 4' },
-            ],
-          },
-        ],
-        urlFile: '',
-      },
-      {
-        name: 'dateField',
-        type: 'date',
-        label: 'Date Field',
-        styleClass: { input: 'custom-date' },
-        style: { input: { 'background-color': '#f9f9f9' } },
-        options: [],
-        urlFile: '',
-      },
-      {
-        name: 'timeField',
-        type: 'time',
-        label: 'Time Field',
-        styleClass: { input: 'custom-time' },
-        style: { input: { 'background-color': '#f9f9f9' } },
-        options: [],
-        urlFile: '',
-      },
-      {
-        name: 'fileField',
-        type: 'file',
-        label: 'File Upload Field',
-        styleClass: { input: 'custom-file' },
-        style: { input: { 'background-color': '#f9f9f9' } },
-        options: [],
-        urlFile: '',
-      },
-      // {
-      //   name: 'radioField',
-      //   type: 'radio',
-      //   label: 'Radio Field',
-      //   options: [
-      //     { id: 'option1', title: 'Option 1' },
-      //     { id: 'option2', title: 'Option 2' },
-      //   ],
-      // },
-      {
-        name: 'notShowField',
-        type: 'NotShow',
-        label: 'Hidden Field',
-        styleClass: { input: 'custom-hidden' },
-        style: { input: { 'background-color': '#f9f9f9' } },
-        options: [],
-        urlFile: '',
-      },
-    ];
-    //  this.styleClass = this.config.data.styleClass;
+    this.formFields = this.config.data.fields;
   }
+
   ngAfterViewInit(): void {}
 
   ngOnInit(): void {
+
     this.createForm();
     this.populateSubcategories();
   }

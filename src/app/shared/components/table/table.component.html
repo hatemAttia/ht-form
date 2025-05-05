@@ -1,34 +1,31 @@
-<p-table #dt styleClass="p-datatable-gridlines p-datatable-striped" [columns]="cols" [value]="data" [tableStyle]="{ 'min-width': '50rem' }">
+<p-table #dt styleClass="p-datatable-gridlines p-datatable-striped" [columns]="cols" [value]="data"
+    [tableStyle]="{ 'min-width': '50rem' }" [scrollable]="true" scrollHeight="flex" >
     <ng-template pTemplate="caption">
         <div class="flex">
             <p-iconField iconPosition="left" class="ml-auto">
                 <p-inputIcon>
                     <i class="pi pi-search"></i>
                 </p-inputIcon>
-                <input 
-                    pInputText 
-                    type="text" 
-                    (input)="handleSearch($event)"
-                    placeholder="Search keyword" />
+                <input pInputText type="text" (input)="handleSearch($event)" placeholder="Search keyword" />
             </p-iconField>
         </div>
-        
+
     </ng-template>
     <ng-template pTemplate="header" let-columns>
         <tr>
             @for (col of columns; track col) {
             <th class="text-center" [pSortableColumn]="tableConfig?.enableSort ? col.field : null">
-            {{ col.header }}
-            @if (tableConfig?.enableSort) {
+                {{ col.header }}
+                @if (tableConfig?.enableSort) {
                 <p-sortIcon [field]="col.field"></p-sortIcon>
-            }
+                }
             </th>
             }
             @if (tableConfig?.enableActions) {
-                <th class="text-center">
-                    {{ tableConfig?.actionsHeader || 'Actions' }}
-                </th>
-                }
+            <th class="text-center">
+                {{ tableConfig?.actionsHeader || 'Actions' }}
+            </th>
+            }
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-rowData let-columns="columns">
@@ -38,6 +35,23 @@
                 {{ col.formatFn ? col.formatFn(rowData[col.field], rowData) : rowData[col.field] }}
             </td>
             }
+            @if (tableConfig?.enableActions) {
+                <td class="text-center">
+                    <div class="buttons-container">
+                      @for (action of processedActions; track action.name) {
+                        @if (!action.visible || action.visible(rowData)) {
+                          <p-button 
+                            [icon]="action.icon"
+                            [pTooltip]="action.tooltip"
+                            styleClass="p-button-sm"
+                            [severity]="getButtonSeverity(action.type)"
+                            (onClick)="action.action(rowData)">
+                          </p-button>
+                        }
+                      }
+                    </div>
+                  </td>
+            }
         </tr>
     </ng-template>
 
@@ -45,7 +59,7 @@
         <tr>
             <td colspan="100%" style="text-align: center">No records found</td>
         </tr>
-       
+
     </ng-template>
 
 </p-table>

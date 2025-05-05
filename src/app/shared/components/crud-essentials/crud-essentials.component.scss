@@ -1,3 +1,10 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%; // Make the component take full height of its container
+}
+
+
 h1 {
     font-size: 2rem;
     font-weight: normal;
@@ -6,6 +13,11 @@ h1 {
 
 app-table {
     width: 100%;
-    height: fit-content;
+    flex: 1; // This will make the table take all remaining space
+    min-height: 0; // Required for flex child to properly scroll
+    border: 1px solid black;
+}
 
+.add-btn {
+    margin-left: auto;
 }

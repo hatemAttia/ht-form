@@ -1,6 +1,6 @@
 <h1>crud-essentials-work!</h1>
 @if (crudEssentialsConfig.enableAdd) {
-    <p-button label="Add" icon="pi pi-plus" (click)="showAddDialog()"></p-button>
+    <p-button class="btn add-btn" label="Add" icon="pi pi-plus" (click)="showAddDialog()"></p-button>
 }
 @if (crudEssentialsConfig.enableTable) {
     <app-table [tableConfig]="crudEssentialsConfig.tableConfig" >

@@ -4,11 +4,14 @@ import { TableComponent } from '../table/table.component';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { FormHtComponent } from '../form-ht/form-ht.component';
 
 @Component({
   selector: 'app-crud-essentials',
   standalone: true,
   imports: [TableComponent, ButtonModule, CommonModule, FormsModule],
+  providers: [DialogService],
   templateUrl: './crud-essentials.component.html',
   styleUrl: './crud-essentials.component.scss'
 })
@@ -16,14 +19,27 @@ export class CrudEssentialsComponent implements OnInit {
 
   @Input() crudEssentialsConfig!: crudEssentialsConfig
 
-  constructor() { }
+  ref: DynamicDialogRef | undefined;
+
+  constructor(
+    public dialogService: DialogService
+  ) { }
 
   ngOnInit(): void {
     console.log('CrudEssentialsComponent initialized', this.crudEssentialsConfig);
   }
 
   showAddDialog() {
-    console.log('Add button clicked');
+    console.log(this.crudEssentialsConfig.formConfig?.fields);
+    
+    this.ref = this.dialogService.open(FormHtComponent, {
+      header: this.crudEssentialsConfig.addHeader || 'Add Item',
+      width: this.crudEssentialsConfig.modalWidth || '50%',
+      contentStyle: { 'max-height': '100vh', overflow: 'auto' },
+      data: {
+        fields: this.crudEssentialsConfig.formConfig?.fields,
+      },
+    })
   }
 
 }
