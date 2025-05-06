@@ -89,7 +89,6 @@ export class TableComponent implements OnInit {
             action: (rowData: any) => this.handleEdit(rowData),
             visible: () => true  // Make sure it's always visible by default
           };
-          console.log('Edit action:', editAction);
 
           return editAction
 
@@ -137,6 +136,7 @@ export class TableComponent implements OnInit {
           ...field,
           value: rowData[field.name]
         })),
+        rowData,
         mode: 'edit'
       },
     })

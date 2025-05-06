@@ -1,5 +1,6 @@
 <p-table #dt styleClass="p-datatable-gridlines p-datatable-striped" [columns]="cols" [value]="data"
-    [tableStyle]="{ 'min-width': '50rem' }" [scrollable]="true" scrollHeight="flex" >
+    [tableStyle]="{ 'min-width': '50rem' }" [scrollable]="true" scrollHeight="flex">
+
     <ng-template pTemplate="caption">
         <div class="flex">
             <p-iconField iconPosition="left" class="ml-auto">
@@ -9,12 +10,13 @@
                 <input pInputText type="text" (input)="handleSearch($event)" placeholder="Search keyword" />
             </p-iconField>
         </div>
-
     </ng-template>
+
     <ng-template pTemplate="header" let-columns>
         <tr>
             @for (col of columns; track col) {
-            <th [class]="'text-' + (col.textAlign || 'left')" [pSortableColumn]="tableConfig?.enableSort ? col.field : null">
+            <th [class]="'text-' + (col.textAlign || 'left')"
+                [pSortableColumn]="tableConfig?.enableSort ? col.field : null">
                 {{ col.header }}
                 @if (tableConfig?.enableSort) {
                 <p-sortIcon [field]="col.field"></p-sortIcon>
@@ -28,6 +30,7 @@
             }
         </tr>
     </ng-template>
+
     <ng-template pTemplate="body" let-rowData let-columns="columns">
         <tr>
             @for (col of columns; track col) {
@@ -36,21 +39,17 @@
             </td>
             }
             @if (tableConfig?.enableActions) {
-                <td class="text-center">
-                    <div class="buttons-container">
-                      @for (action of processedActions; track action.name) {
-                        @if (!action.visible || action.visible(rowData)) {
-                          <p-button 
-                            [icon]="action.icon"
-                            [pTooltip]="action.tooltip"
-                            styleClass="p-button-sm"
-                            [severity]="getButtonSeverity(action.type)"
-                            (onClick)="action.action(rowData)">
-                          </p-button>
-                        }
-                      }
-                    </div>
-                  </td>
+            <td class="text-center">
+                <div class="buttons-container">
+                    @for (action of processedActions; track action.name) {
+                    @if (!action.visible || action.visible(rowData)) {
+                    <p-button [icon]="action.icon" [pTooltip]="action.tooltip" styleClass="p-button-sm"
+                        [severity]="getButtonSeverity(action.type)" (onClick)="action.action(rowData)">
+                    </p-button>
+                    }
+                    }
+                </div>
+            </td>
             }
         </tr>
     </ng-template>

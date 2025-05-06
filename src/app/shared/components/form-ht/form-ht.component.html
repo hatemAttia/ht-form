@@ -61,7 +61,6 @@
         [style]="{ width: '100%' }"
         [formControlName]="field.name"
         [placeholder]="field.placeHolder"
-        (onInput)="preventPrefixDeletion($event, field.name, field)"
       ></p-inputMask>
     </ng-container>
     <ng-container *ngIf="field.type === 'many-select'">

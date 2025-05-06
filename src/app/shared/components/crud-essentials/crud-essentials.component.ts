@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { crudEssentialsConfig } from '../../types/crudEssesntialsConfig.interface';
 import { TableComponent } from '../table/table.component';
 import { ButtonModule } from 'primeng/button';
@@ -6,27 +6,40 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { FormHtComponent } from '../form-ht/form-ht.component';
+import { CrudCommunicationService } from '../../services/crud-communication.service';
+import { CrudFormSubmitEvent } from '../../types/crudCom.interfaces';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-crud-essentials',
   standalone: true,
   imports: [TableComponent, ButtonModule, CommonModule, FormsModule],
-  providers: [DialogService],
+  providers: [DialogService, CrudCommunicationService],
   templateUrl: './crud-essentials.component.html',
   styleUrl: './crud-essentials.component.scss'
 })
 export class CrudEssentialsComponent implements OnInit {
 
   @Input() crudEssentialsConfig!: crudEssentialsConfig
+  @Output() formSubmit = new EventEmitter<CrudFormSubmitEvent>();
 
   ref: DynamicDialogRef | undefined;
+  private destroy$ = new Subject<void>();
 
   constructor(
-    public dialogService: DialogService
+    public dialogService: DialogService,
+    private crudCommService: CrudCommunicationService,
   ) { }
 
   ngOnInit(): void {
     console.log('CrudEssentialsComponent initialized', this.crudEssentialsConfig);
+
+    this.crudCommService
+      .on<CrudFormSubmitEvent>('formSubmit')
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(event => {
+        this.formSubmit.emit(event); 
+      });
   }
 
   showAddDialog() {
@@ -38,8 +51,14 @@ export class CrudEssentialsComponent implements OnInit {
       contentStyle: { 'max-height': '100vh', overflow: 'auto' },
       data: {
         fields: this.crudEssentialsConfig.formConfig?.fields,
+        mode: 'add',
       },
     })
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
 }

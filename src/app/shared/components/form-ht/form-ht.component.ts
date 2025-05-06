@@ -28,6 +28,8 @@ import { CalendarModule } from 'primeng/calendar';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { FileUploadModule } from 'primeng/fileupload';
 import { InputMaskModule } from 'primeng/inputmask';
+import { CrudCommunicationService } from '../../services/crud-communication.service';
+import { CrudFormSubmitEvent } from '../../types/crudCom.interfaces';
 
 @Component({
   selector: 'app-form-ht',
@@ -58,12 +60,13 @@ export class FormHtComponent implements OnInit, AfterViewInit {
   styleClassToggle: any;
   submitting = true;
   uploadedFiles: any = [];
-  mode: string = 'add';
+  mode: 'add' | 'edit' = 'add';
   constructor(
     public ref: DynamicDialogRef,
     private formBuilder: FormBuilder,
     public config: DynamicDialogConfig,
     // private formsService: FormsService,
+    private crudComService: CrudCommunicationService,
     private sanitizer: DomSanitizer
   ) {
     // this.formFields = this.config.data.formFields;
@@ -76,6 +79,10 @@ export class FormHtComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
 
     this.createForm();
+
+    if(this.config.data.mode == 'edit') {
+      this.dynamicForm.addControl('id', this.formBuilder.control(this.config.data.rowData.id, Validators.required));
+    }
     
     this.populateSubcategories();
   }
@@ -111,11 +118,11 @@ export class FormHtComponent implements OnInit, AfterViewInit {
         formData.file = this.selectedImages;
       }
 
-      // this.formsService.emitFormData({
-      //   submited: true,
-      //   formData: formData,
-      // });
-      console.log(formData);
+      this.crudComService.emit<CrudFormSubmitEvent>('formSubmit', {
+        action: this.mode,
+        data: formData,
+      });
+      
     } else {
       this.dynamicForm.markAllAsTouched();
       console.log('Form is invalid');
@@ -208,20 +215,6 @@ export class FormHtComponent implements OnInit, AfterViewInit {
     }
   }
 
-  preventPrefixDeletion(event: Event, controlName: string, filed: any) {
-    const inputElement = event.target as HTMLInputElement;
-    const currentValue = inputElement.value;
-
-    // Ensure the prefix "+216 " is always present
-    if (!currentValue.startsWith(filed.preValuePhone)) {
-      const control = this.dynamicForm.get(controlName);
-      control?.setValue(
-        '+216 ' + currentValue.replace(filed.preValuePhone, '')
-      );
-      inputElement.value =
-        '+216 ' + currentValue.replace(filed.preValuePhone, '');
-    }
-  }
   selectedImages: File[] = [];
   imagePreviews: (string | ArrayBuffer | null)[] = [];
   isDragging: boolean = false;
